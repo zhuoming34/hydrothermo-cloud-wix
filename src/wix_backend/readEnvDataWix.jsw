@@ -1,0 +1,29 @@
+import { fetch } from 'wix-fetch';
+
+export async function readEnv(table_name, device_id, data_amount) {
+    console.log("Fetching data from cloud ...");
+
+    const queryString = `table_name=${table_name}&device_id=${device_id}&data_amount=${data_amount}`;
+
+    // TODO: Update api_id, region, stage, and api_name in the url below
+    const url = `https://${api_id}.execute-api.${region}.amazonaws.com/${stage}/${api_name}?${queryString}`;
+
+    const response = await fetch(url, { method: "GET" });
+
+    if (!response.ok) {
+    throw new Error(`Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    const myDevice = data.deviceData[0]?.device_id || "unknown device";
+
+    const readings = data.deviceData.map(entry => ({
+        timestamp: Number(entry.timestamp),
+        temperature: parseFloat(entry.env_data.temperature),
+        humidity: parseFloat(entry.env_data.humidity)
+    }));
+
+    return { myDevice, readings };
+
+}
