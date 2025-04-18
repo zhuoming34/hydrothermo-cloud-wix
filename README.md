@@ -9,4 +9,7 @@ In [AWS Free Tier](https://aws.amazon.com/free/), IoT-Core is only free for 3 mo
 API Gateway and Lambda provides 1 million free requests per month respectively, and DynanoDB provides 25 GB storage in total. So we will use Lambda+API Gateway to replace some functionalities we need from IoT-Core (MQTT pub/sub/rules). 
 The AWS API Gateway after 12 months costs about a cup of coffee for every 1 million requests. You may consider to continue using it, set up a new AWS account, use GCP services instead, or read/write with DynamoDB directly (not recommended).
 
+# Wix Page
+https://udgnstudio.wixsite.com/zm34/hydrothermo
+
 # Under Construction
